@@ -2,15 +2,11 @@
 # Pulls n farms randomly from upload.farm and aggregates certain pertinent data points about each farm into a pandas dataframe
 # then saves to csv
 
-from turtle import title
 import requests as req
 import pandas as pd
 from bs4 import BeautifulSoup
 import random
 from time import sleep
-from matplotlib import pyplot as plt
-import os
-import seaborn as sns
 
 base_uri = "https://upload.farm/"
 slug_list = []
@@ -92,16 +88,3 @@ for index, row in final_df.iterrows():
 print(final_df)
 
 final_df.to_csv('stardewvalley_aggregator_data.csv')
-
-sns.set()
-sns.countplot(final_df['spouse'], palette='tab10')
-plt.savefig('spouse.png')
-plt.close()
-sns.set()
-sns.countplot(final_df['gender'], palette='tab10')
-plt.savefig('gender.png')
-plt.close()
-sns.set()
-sns.countplot(final_df['pet_type'], palette='tab10')
-plt.savefig('pet_type.png')
-plt.close()
